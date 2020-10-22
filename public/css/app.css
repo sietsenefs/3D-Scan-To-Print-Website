@@ -1,0 +1,76 @@
+body {
+    background-color: white;
+  }
+  
+  .testcubes {
+    margin: 10px auto;
+  }
+  
+  .testcubebig {
+    min-height: 400px;
+  }
+  .buttons{
+    margin-top: 20px;
+  }
+  .modelcard {
+    margin: 20px 0px;
+  }
+
+  #hotspottext{
+    margin: 5px 0 0 0;
+  }
+
+  .commentrow{
+      margin: 20px;
+  }
+
+.commentmodel{
+  height: 400px;
+  width: 100%;
+}
+
+  .testblock{
+      background-color: lightblue;
+      height: 100%;
+      width: 100%;
+  }
+
+
+
+  #instructions {
+    width: 320px;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  .hotspot{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+  }
+
+  .annotation{
+      width: auto;
+    background-color: #888888;
+    position: absolute;
+    transform: translate(10px, 10px);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .hotspot.selected{
+    background-color: red;
+  }
+
+  .hotspot:not(.selected) > .annotation{
+    display: none;
+  }
+
+  button[slot="hotspot-0"]{
+    --min-hotspot-opacity: 0;
+    background-color: red;
+  }
