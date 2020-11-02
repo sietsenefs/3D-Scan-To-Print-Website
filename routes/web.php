@@ -26,3 +26,11 @@ Route::get('welcome', function () {
 Route::get('comment', function () {
     return view('test\comment');
 });
+
+Route::get('test', function () {
+    return view('index');
+});
+
+Route::get('test2', function () {
+    return view('commentreply2');
+});

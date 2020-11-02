@@ -19384,8 +19384,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Siets\Documents\Github\3D-scan-to-print\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Siets\Documents\Github\3D-scan-to-print\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Users\Siets\Documents\Github\3D-Scan-To-Print-Website\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Siets\Documents\Github\3D-Scan-To-Print-Website\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

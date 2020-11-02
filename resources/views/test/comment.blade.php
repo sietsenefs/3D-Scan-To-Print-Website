@@ -38,16 +38,36 @@
              
             </div>
             <div class="card-footer text-muted">
-              2 hours ago
+              3D model last updated 2 hours ago
             </div>
           </div>
     </div>
 
-
-    <div class="col-md-6">
-     
+    <div class="col-md-6 col-sm-offset-4 ">
+      <div class="chatbox">
+    <div class="chattitle card-header">
+      Chat
     </div>
-    
+    <div class="col-md-12 col-sm-offset-4 frame">
+      
+        <ul></ul>
+        <div>
+            <div class="msj-rta macro" style="margin:auto">                        
+                <div class="text text-r" >
+                    <input class="mytext" placeholder="Type a message"/>
+                </div> 
+            </div>
+        
+    </div>    
+  </div>
+
+  <div class="chatfooter card-footer text-muted">
+    Last message 12 min ago
+  </div>
+
+    </div>
+  
+  </div>
   </div>
 
 
@@ -137,4 +157,86 @@ el.remove()}; // Removes the last added hotspot
 }
 </script>
 
+
+<script>
+  var me = {};
+
+var you = {};
+
+function formatAMPM(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+}            
+
+//-- No use time. It is a javaScript effect.
+function insertChat(who, text, time = 0){
+    var control = "";
+    var date = formatAMPM(new Date());
+   
+    var sender = " / Sietse - Makerpoint";
+    var you = " / you";
+    
+    if (who == "you"){
+        
+        control = '<li style="width:100%">' +
+                        '<div class="msj macro bubble">' +
+                            '<div class="text text-l">' +
+                                '<p>'+ text +'</p>' +
+                                '<p><small>'+date+sender+'</small></p>' +
+                            '</div>' +
+                        '</div>' +
+                    '</li>';                    
+    }else{
+        control = '<li style="width:100%;">' +
+                        '<div class="msj-rta macro bubble">' +
+                            '<div class="text text-r">' +
+                                '<p>'+text+'</p>' +
+                                '<p><small>'+date+you+'</small></p>' +
+                            '</div>' +
+                        '<div class="avatar" style="padding:0px 0px 0px 10px !important"></div>' +                                
+                  '</li>';
+    }
+    setTimeout(
+        function(){                        
+            $("ul").append(control);
+
+        }, time);
+    
+}
+
+function resetChat(){
+    $("ul").empty();
+}
+
+$(".mytext").on("keyup", function(e){
+    if (e.which == 13){
+        var text = $(this).val();
+        if (text !== ""){
+            insertChat("me", text);              
+            $(this).val('');
+        }
+    }
+});
+
+//-- Clear Chat
+resetChat();
+
+//-- Print Messages
+// insertChat("me", "Hello Tom...", 0);  
+insertChat("you", "Hallo..., dit is de eerste versie van het 3D model heb je er nog aanmerkingen over?", 1500);
+insertChat("you", "als dat het geval is kun je door dubbel te klikken op het model of door hier te typen een aanmerking achter laten.",2000);
+insertChat("me", "Yes i do have some things", 3500);
+
+// insertChat("me", "Spaceman: Computer! Computer! Do we bring battery?!", 9500);
+// insertChat("you", "LOL", 12000);
+
+
+//-- NOTE: No use time on insertChat.
+</script>
 @endsection
