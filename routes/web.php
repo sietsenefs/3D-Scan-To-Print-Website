@@ -27,6 +27,10 @@ Route::get('comment', function () {
     return view('test\comment');
 });
 
+Route::get('comment2', function () {
+    return view('test\comment2');
+});
+
 Route::get('test', function () {
     return view('index');
 });

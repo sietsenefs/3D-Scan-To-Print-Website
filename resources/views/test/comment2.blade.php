@@ -1,15 +1,15 @@
 @extends('layouts.defaultlayout')
 @section('content')
-<div class="row commentrow">
-    <div class="col-md-6">
-        <div class="card text-center modelcard">
-            <div class="card-header chattitle">
-              Model
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Iphone case</h5>
-        
-                    <model-viewer ondblclick="addHotspot()" onclick="selected()" class="commentmodel" id="modelblock" src="{{asset('models/iphone-xr-case.gltf')}}" class="onClick testcubes testcubebig col-md-12"
+
+
+
+    <div class="flex justify-content-around">
+
+        {{-- left side --}}
+        <div class="col-md-8 block block1">
+
+
+            <model-viewer ondblclick="addHotspot()" onclick="selected()" class="commentmodel" id="modelblock" src="{{asset('models/iphone-xr-case.gltf')}}" class="onClick testcubes testcubebig col-md-12"
                                 ar
                                 auto-rotate 
                                 camera-controls
@@ -24,51 +24,59 @@
                     </model-viewer>
         
 
-                    <div class="row buttons">
-                      <div class="col-md-6">
-                    <button class="btn btn-primary" class="col-md-12" onclick="removeHotspot()">Remove Hotspot</button>
-                      </div>
+                    
 
-                    <div class="col-md-6">
-                    <form onSubmit="return false;">
-                      <input type="text" id="hotspottext" class="col-md-12" name="hotspottext" placeholder="Input text for hotspot">
-                     </form>
-                    </div>
-                    </div>
-             
-            </div>
-            <div class="card-footer text-muted">
-              3D model last updated 2 hours ago
-            </div> 
-          </div>
-    </div>
+        </div>
 
-    <div class="col-md-6 col-sm-offset-4 ">
-      <div class="chatbox">
-    <div class="chattitle card-header">
-      Chat
-    </div>
-    <div class="col-md-12 col-sm-offset-4 frame">
+
+ {{-- right side --}}
+        <div class="col-md-4 block block2">
+
+
+            <div class="col-md-12 col-sm-offset-4 frame">
       
-        <ul class="textinsert"></ul>
-        <div>
-            <div class="msj-rta macro" style="margin:auto">                        
-                <div class="text text-r" >
-                    <input class="mytext" placeholder="Type a message"/>
-                </div> 
+                <ul class="textinsert"></ul>
+                <div>
+                    <div class="msj-rta macro" style="margin:auto">                        
+                        <div class="text text-r" >
+                            <input class="mytext" placeholder="Type a message"/>
+                        </div> 
+                    </div>
+                
+            </div>    
+          </div>
+
+
+
+
+          <div class="input-group addhotspot">
+            <div class="input-group-prepend">
+              <button type="button" onclick="removeHotspot()" class="btn btn-outline-secondary">Remove hotspot</button>
+              <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
             </div>
+            <input type="text" id="hotspottext" name="hotspottext" class="form-control" placeholder="Input text for hotspot" aria-label="Text input with segmented dropdown button">
         
-    </div>    
-  </div>
 
-  <div class="chatfooter card-footer text-muted">
-    Last message 12 min ago
-  </div>
+          </div>
 
-    </div>
-  
-  </div>
-  </div>
+
+
+        </div>
+      </div>
+
+
+
+
+ 
 
 
   <script>
@@ -97,7 +105,7 @@ for (var i = 0; i < hotspots.length; i++) {
     //hotspot counter so we can keep track of how many we added on 3 because we already have hotspot-0 and hotspot-1 (set to 0 if you start with 0 hotspots)
     var hotspotCounter = 2;
     function addHotspot(MouseEvent) {
-        var inputtext = document.querySelector('input').value;
+        var inputtext = document.querySelector('#hotspottext').value;
 
         // if input = nothing then alert error if it isnt then add the hotspot
         if (inputtext == ""){
@@ -137,7 +145,7 @@ element.classList.add('annotation');
 element.appendChild(document.createTextNode(inputtext));
 document.getElementById(`hotspot-${hotspotCounter}`).appendChild(element);
 
-document.querySelector('input').value = "";
+document.querySelector('#hotspottext').value = "";
 }
 }
 </script>
