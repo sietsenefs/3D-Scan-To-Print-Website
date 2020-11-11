@@ -8,20 +8,87 @@
         {{-- left side --}}
         <div class="col-md-8 block block1">
 
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class=" nav-item nav-link version1 active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Version 1</a>
+                  <a class="nav-item nav-link version2 " id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Version 2</a>
+                  <a class="version3 nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Version 3</a>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-            <model-viewer ondblclick="addHotspot()" onclick="selected()" class="commentmodel" id="modelblock" src="{{asset('models/iphone-xr-case.gltf')}}" class="onClick testcubes testcubebig col-md-12"
-                                ar
-                                auto-rotate 
-                                camera-controls
-                                background-color="#254441"
-                                shadow-intensity="1"
-                              alt="A 3D model of a test cube">
-                              
-                              <button slot="hotspot-0" class="hotspot" data-position="1.0731413083850803m 4.187490154939494m 5.626263159808076e-7m" data-normal="-7.675218260174282e-16m 1.343588356110743e-7m -0.9999999999999911m">
-                                <div class="annotation">Screw on the scanner here</div></button>
+                    <model-viewer ondblclick="addHotspot()" onclick="selected()" style="background-color:#fffff2;" class="commentmodel" id="modelblock" src="{{asset('models/iphone-xr-case.gltf')}}" class="onClick testcubes testcubebig col-md-12"
+                    ar
+                    auto-rotate 
+                    camera-controls
+                    
+                    shadow-intensity="1"
+                    
+                  alt="A 3D model of a test cube">
+                  <div slot="progress-bar"></div>
+                  <button slot="hotspot-0" class="hotspot" data-position="1.0731413083850803m 4.187490154939494m 5.626263159808076e-7m" data-normal="-7.675218260174282e-16m 1.343588356110743e-7m -0.9999999999999911m">
+                    <div class="annotation">Screw on the scanner here</div></button>
 
-                                
-                    </model-viewer>
+                    
+        </model-viewer>
+
+
+
+                </div>
+
+
+
+
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                    <model-viewer  ondblclick="addHotspot()" onclick="selected()" style="background-color:#f9f9f9;" class="commentmodel" id="modelblock2" src="{{asset('models/iphone-xr-case.gltf')}}" class="onClick testcubes testcubebig col-md-12"
+                    ar
+                    auto-rotate 
+                    camera-controls
+                    background-color="#254441"
+                    shadow-intensity="1"
+                  alt="A 3D model of a test cube">
+                  <div slot="progress-bar"></div>
+                  
+                  <button slot="hotspot-0" class="hotspot" data-position="1.0731413083850803m 4.187490154939494m 5.626263159808076e-7m" data-normal="-7.675218260174282e-16m 1.343588356110743e-7m -0.9999999999999911m">
+                    <div class="annotation">Screw on the scanner here</div></button>
+
+                    
+        </model-viewer>
+
+                </div>
+
+
+
+
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+
+                    <model-viewer  ondblclick="addHotspot()" onclick="selected()" style="background-color:#f9f1f1;" class="commentmodel" id="modelblock3" src="{{asset('models/iphone-xr-case.gltf')}}" class="onClick testcubes testcubebig col-md-12"
+                    ar
+                    auto-rotate 
+                    camera-controls
+                    background-color="#254441"
+                    shadow-intensity="1"
+                  alt="A 3D model of a test cube">
+                  <div slot="progress-bar"></div>
+                  
+                  <button slot="hotspot-0" class="hotspot" data-position="1.0731413083850803m 4.187490154939494m 5.626263159808076e-7m" data-normal="-7.675218260174282e-16m 1.343588356110743e-7m -0.9999999999999911m">
+                    <div class="annotation">Screw on the scanner here</div></button>
+
+                    
+        </model-viewer>
+
+
+
+                </div>
+
+
+
+              </div>
+
+           
         
 
                     

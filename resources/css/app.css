@@ -29,13 +29,38 @@ body {
   }
 
 .commentmodel{
-  height: 400px;
+
+  height: 80vh;
   width: 100%;
+  border: solid 1px transparent;
+  border-color: transparent #dee2e6 #dee2e6 #dee2e6;
+}
+
+.version1.active{
+  background-color: #fffff2!important;
+  border-color: #dee2e6 #dee2e6 #fffff2 #dee2e6!important;
+}
+
+.version2.active{
+
+  background-color: #f9f9f9!important;
+  border-color: #dee2e6 #dee2e6 #f9f9f9 #dee2e6!important;
+}
+
+.version3.active{
+  background-color: #f9f1f1!important;
+  border-color: #dee2e6 #dee2e6 #f9f1f1 #dee2e6!important;
 }
 
 #modelblock{
-height: 80vh;
+
+
 }
+
+.userInput:focus {
+  outline: none!important;
+}
+
 
   .testblock{
       background-color: lightblue;
