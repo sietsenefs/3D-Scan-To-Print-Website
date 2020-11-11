@@ -65,7 +65,7 @@
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
 
-                    <model-viewer  ondblclick="addHotspot()" onclick="selected()" style="background-color:#f9f1f1;" class="commentmodel" id="modelblock3" src="{{asset('models/iphone-xr-case.gltf')}}" class="onClick testcubes testcubebig col-md-12"
+                    <model-viewer  ondblclick="addHotspot()" onclick="selected()" style="background-color:#f9f1f1;" class="commentmodel" id="modelblock3" src="{{asset('models/benchyFirst2.glb')}}" class="onClick testcubes testcubebig col-md-12"
                     ar
                     auto-rotate 
                     camera-controls
@@ -74,8 +74,7 @@
                   alt="A 3D model of a test cube">
                   <div slot="progress-bar"></div>
                   
-                  <button slot="hotspot-0" class="hotspot" data-position="1.0731413083850803m 4.187490154939494m 5.626263159808076e-7m" data-normal="-7.675218260174282e-16m 1.343588356110743e-7m -0.9999999999999911m">
-                    <div class="annotation">Screw on the scanner here</div></button>
+                 
 
                     
         </model-viewer>
