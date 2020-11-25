@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hetlabrotterdam.xyz</title>
+<!-- bootstrap-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+<!-- 3d model viewer links -->
+<!-- Loads <model-viewer> for modern browsers: -->
+    <script type="module"
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+</script>
+
+<!-- Loads <model-viewer> for old browsers like IE11: -->
+<script nomodule
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+</script>
+
+<!-- The following libraries and polyfills are recommended to maximize browser support -->
+<!-- NOTE: you must adjust the paths as appropriate for your project -->
+    
+<!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+
+<!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+
+<!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+<script src="https://unpkg.com/resize-observer-polyfill@1.5.1/dist/ResizeObserver.js"></script>
+
+<!-- 💁 OPTIONAL: Fullscreen polyfill is required for experimental AR features in Canary -->
+<!--<script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>-->
+
+<!-- 💁 OPTIONAL: Include prismatic.js for Magic Leap support -->
+<!--<script src="https://unpkg.com/@magicleap/prismatic@0.18.2/prismatic.min.js"></script>-->
+
+
+<!-- bootstrap links -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="css/app.css" >
+
+
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">3D scan to print</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+
+
+  <div class="flex justify-content-around">
+
+<!-- left side  -->
+    <div class="col-md-8 block block1">
+
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class=" nav-item nav-link version1 active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Version 1</a>
+              <a class="nav-item nav-link version2 " id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Version 2</a>
+              <a class="version3 nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Version 3</a>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                <model-viewer ondblclick="addHotspot()" onclick="selected()" style="background-color:#fffff2;" class="commentmodel" id="modelblock" src="models/iphone-xr-case.gltf" class="onClick testcubes testcubebig col-md-12"
+                ar
+                auto-rotate 
+                camera-controls
+                
+                shadow-intensity="1"
+                
+              alt="A 3D model of a test cube">
+              <div slot="progress-bar"></div>
+              <button slot="hotspot-0" class="hotspot" data-position="1.0731413083850803m 4.187490154939494m 5.626263159808076e-7m" data-normal="-7.675218260174282e-16m 1.343588356110743e-7m -0.9999999999999911m">
+                <div class="annotation">Screw on the scanner here</div></button>
+
+                
+    </model-viewer>
+
+
+
+            </div>
+
+
+
+
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                <model-viewer  ondblclick="addHotspot()" onclick="selected()" style="background-color:#efedfa;" class="commentmodel" id="modelblock2" src="models/benchyFirst3.glb" class="onClick testcubes testcubebig col-md-12"
+                ar
+                auto-rotate 
+                camera-controls
+                background-color="#254441"
+                shadow-intensity="1"
+              alt="A 3D model of a test cube">
+              <div slot="progress-bar"></div>
+              
+              <button slot="hotspot-0" class="hotspot" data-position="1.0731413083850803m 4.187490154939494m 5.626263159808076e-7m" data-normal="-7.675218260174282e-16m 1.343588356110743e-7m -0.9999999999999911m">
+                <div class="annotation">Screw on the scanner here</div></button>
+
+                
+    </model-viewer>
+
+            </div>
+
+
+
+
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+
+                <model-viewer  ondblclick="addHotspot()" onclick="selected()" style="background-color:#f9f1f1;" class="commentmodel" id="modelblock3" src="models/benchyFirst2.glb" class="onClick testcubes testcubebig col-md-12"
+                ar
+                auto-rotate 
+                camera-controls
+                background-color="#254441"
+                shadow-intensity="1"
+              alt="A 3D model of a test cube">
+              <div slot="progress-bar"></div>
+              
+             
+
+                
+    </model-viewer>
+
+
+
+            </div>
+
+
+
+          </div>
+
+       
+    
+
+                
+
+    </div>
+
+
+<!-- right side -->
+    <div class="col-md-4 block block2">
+
+
+        <div class="col-md-12 col-sm-offset-4 frame">
+  
+            <ul class="textinsert"></ul>
+            <div>
+                <div class="msj-rta macro" style="margin:auto">                        
+                    <div class="text text-r" >
+                        <input class="mytext" placeholder="Type a message"/>
+                    </div> 
+                </div>
+            
+        </div>    
+      </div>
+
+
+
+
+      <div class="input-group addhotspot">
+        <div class="input-group-prepend">
+          <button type="button" onclick="removeHotspot()" class="btn btn-outline-secondary">Remove hotspot</button>
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div role="separator" class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+        <input type="text" id="hotspottext" name="hotspottext" class="form-control" placeholder="Input text for hotspot" aria-label="Text input with segmented dropdown button">
+    
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+<script>
+//script to hightlight selected hotspot
+function selected(){
+        // Add active class to the current button (highlight it)
+var header = document.getElementById("modelblock");
+var hotspots = header.getElementsByClassName("hotspot");
+for (var i = 0; i < hotspots.length; i++) {
+hotspots[i].addEventListener("click", function() {
+var current = document.getElementsByClassName("selected");
+if (current.length > 0) { 
+current[0].className = current[0].className.replace(" selected", "");
+}
+this.className += " selected";
+});
+}
+
+}
+
+
+</script>
+    
+<script>
+//script to add an hotspot on doubleclick
+//hotspot counter so we can keep track of how many we added on 3 because we already have hotspot-0 and hotspot-1 (set to 0 if you start with 0 hotspots)
+var hotspotCounter = 2;
+function addHotspot(MouseEvent) {
+    var inputtext = document.querySelector('#hotspottext').value;
+
+    // if input = nothing then alert error if it isnt then add the hotspot
+    if (inputtext == "test"){
+alert("Put in text first to add hotspots.");
+}else{
+   
+  const viewer = document.querySelector('#modelblock');
+const rect = viewer.getBoundingClientRect();
+
+const x = event.clientX - rect.left;
+const y = event.clientY - rect.top;
+const positionAndNormal = viewer.positionAndNormalFromPoint(x, y);
+
+// if the model is not clicked return the position in the console
+if (positionAndNormal == null) {
+console.log('no hit result: mouse = ', x, ', ', y);
+return;
+}
+const {position, normal} = positionAndNormal;
+
+// create the hotspot
+const hotspot = document.createElement('button');
+hotspot.slot = `hotspot-${hotspotCounter ++}`;
+hotspot.classList.add('hotspot');
+hotspot.id = `hotspot-${hotspotCounter}`;
+hotspot.dataset.position = position.toString();
+if (normal != null) {
+hotspot.dataset.normal = normal.toString();
+}
+viewer.appendChild(hotspot);
+console.log('mouse = ', x, ', ', y, positionAndNormal);
+
+
+// adds the text to last hotspot
+var element = document.createElement("div");
+element.classList.add('annotation');
+element.appendChild(document.createTextNode(inputtext));
+document.getElementById(`hotspot-${hotspotCounter}`).appendChild(element);
+
+document.querySelector('#hotspottext').value = "";
+}
+}
+</script>
+
+
+
+
+
+<script>
+// script to remove last hotspot
+function removeHotspot(){
+var el = document.getElementById(`hotspot-${hotspotCounter}`);
+
+if (el == null){
+    alert("No hotspots to delete");
+}else{
+    hotspotCounter --;
+el.remove()}; // Removes the last added hotspot
+}
+</script>
+
+
+<script>
+var me = {};
+
+var you = {};
+
+function formatAMPM(date) {
+var hours = date.getHours();
+var minutes = date.getMinutes();
+var ampm = hours >= 12 ? 'PM' : 'AM';
+hours = hours % 12;
+hours = hours ? hours : 12; // the hour '0' should be '12'
+minutes = minutes < 10 ? '0'+minutes : minutes;
+var strTime = hours + ':' + minutes + ' ' + ampm;
+return strTime;
+}            
+
+//-- No use time. It is a javaScript effect.
+function insertChat(who, text, time = 0){
+var control = "";
+var date = formatAMPM(new Date());
+
+var sender = " / Sietse - Makerpoint";
+var you = " / you";
+
+if (who == "you"){
+    
+    control = '<li style="width:100%">' +
+                    '<div class="msj macro bubble">' +
+                        '<div class="text text-l">' +
+                            '<p>'+ text +'</p>' +
+                            '<p><small>'+date+sender+'</small></p>' +
+                        '</div>' +
+                    '</div>' +
+                '</li>';                    
+}else{
+    control = '<li style="width:100%;">' +
+                    '<div class="msj-rta macro bubble">' +
+                        '<div class="text text-r">' +
+                            '<p>'+text+'</p>' +
+                            '<p><small>'+date+you+'</small></p>' +
+                        '</div>' +
+                    '<div class="avatar" style="padding:0px 0px 0px 10px !important"></div>' +                                
+              '</li>';
+}
+setTimeout(
+    function(){                        
+        $(".textinsert").append(control);
+
+    }, time);
+
+}
+
+function resetChat(){
+$(".textinsert").empty();
+}
+
+$(".mytext").on("keyup", function(e){
+if (e.which == 13){
+    var text = $(this).val();
+    if (text !== ""){
+        insertChat("me", text);              
+        $(this).val('');
+    }
+}
+});
+
+//-- Clear Chat
+resetChat();
+
+//-- Print Messages
+// insertChat("me", "Hello Tom...", 0);  
+insertChat("you", "Hallo..., dit is de eerste versie van het 3D model heb je er nog aanmerkingen over?", 1500);
+insertChat("you", "als dat het geval is kun je door dubbel te klikken op het model of door hier te typen een aanmerking achter laten.",2000);
+insertChat("me", "Yes i do have some things", 3500);
+
+// insertChat("me", "Spaceman: Computer! Computer! Do we bring battery?!", 9500);
+// insertChat("you", "LOL", 12000);
+
+
+//-- NOTE: No use time on insertChat.
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
